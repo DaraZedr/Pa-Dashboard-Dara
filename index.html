@@ -1,785 +1,1356 @@
-
-
+انجام شد 
+دیپلوی شد 
+اما ساختار HTML ایراد داه 
+میخوام این HTML زیر جایگزین باشه 
 
 
 <!DOCTYPE html>
-
-
-
 <html lang="fa" dir="rtl">
-
-
-
 <head>
-
-
-
-<meta charset="UTF-8" />
-
-
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
-
-
-
-
-
-
-<title>PA Dashboard Pro</title>
-
-
-
-
-
-
-
-<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-
-
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-
-
-
-
-
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PA Product Analysis — Beauty Startup</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <style>
-
-
-
-:root{
-
-
-
-  --bg:#07070B;
-
-
-
-  --card:rgba(255,255,255,0.04);
-
-
-
-  --border:rgba(255,255,255,0.08);
-
-
-
-  --text:#EDEDED;
-
-
-
-  --muted:#9CA3AF;
-
-
-
-  --accent:#A855F7;
-
-
-
-  --accent2:#22D3EE;
-
-
-
-}
-
-
-
-
-
-
-
-*{margin:0;padding:0;box-sizing:border-box}
-
-
-
-
-
-
-
-body{
-
-
-
-  font-family:Vazirmatn;
-
-
-
-  background:radial-gradient(circle at top,#0F0A1F,#07070B);
-
-
-
-  color:var(--text);
-
-
-
-}
-
-
-
-
-
-
-
-/* NAV */
-
-
-
-nav{
-
-
-
-  position:fixed;top:0;right:0;left:0;
-
-
-
-  height:60px;
-
-
-
-  display:flex;
-
-
-
-  align-items:center;
-
-
-
-  justify-content:space-between;
-
-
-
-  padding:0 24px;
-
-
-
-  backdrop-filter:blur(20px);
-
-
-
-  background:rgba(10,10,15,0.6);
-
-
-
-  border-bottom:1px solid var(--border);
-
-
-
-}
-
-
-
-
-
-
-
-nav a{
-
-
-
-  color:var(--muted);
-
-
-
-  text-decoration:none;
-
-
-
-  margin:0 10px;
-
-
-
-  font-size:13px;
-
-
-
-}
-
-
-
-nav a:hover{color:white}
-
-
-
-
-
-
-
-/* CONTAINER */
-
-
-
-.container{
-
-
-
-  max-width:1200px;
-
-
-
-  margin:90px auto;
-
-
-
-  padding:0 20px;
-
-
-
-}
-
-
-
-
-
-
-
-/* HERO */
-
-
-
-.hero{
-
-
-
-  display:grid;
-
-
-
-  grid-template-columns:repeat(3,1fr);
-
-
-
-  gap:16px;
-
-
-
-  margin-bottom:30px;
-
-
-
-}
-
-
-
-
-
-
-
-.card{
-
-
-
-  background:var(--card);
-
-
-
-  border:1px solid var(--border);
-
-
-
-  border-radius:16px;
-
-
-
-  padding:18px;
-
-
-
-  transition:0.3s;
-
-
-
-}
-
-
-
-
-
-
-
-.card:hover{
-
-
-
-  transform:translateY(-4px);
-
-
-
-  border-color:rgba(168,85,247,0.4);
-
-
-
-}
-
-
-
-
-
-
-
-.card h3{
-
-
-
-  font-size:12px;
-
-
-
-  color:var(--muted);
-
-
-
-}
-
-
-
-
-
-
-
-.card .value{
-
-
-
-  font-size:28px;
-
-
-
-  font-weight:700;
-
-
-
-  margin-top:8px;
-
-
-
-}
-
-
-
-
-
-
-
-/* GRID */
-
-
-
-.grid{
-
-
-
-  display:grid;
-
-
-
-  grid-template-columns:1fr 1fr;
-
-
-
-  gap:16px;
-
-
-
-  margin-top:20px;
-
-
-
-}
-
-
-
-
-
-
-
-.panel{
-
-
-
-  background:var(--card);
-
-
-
-  border:1px solid var(--border);
-
-
-
-  border-radius:16px;
-
-
-
-  padding:18px;
-
-
-
-}
-
-
-
-
-
-
-
-.title{
-
-
-
-  font-size:14px;
-
-
-
-  margin-bottom:12px;
-
-
-
-  color:white;
-
-
-
-}
-
-
-
-
-
-
-
-/* RESPONSIVE */
-
-
-
-@media(max-width:768px){
-
-
-
-  .hero{grid-template-columns:1fr}
-
-
-
-  .grid{grid-template-columns:1fr}
-
-
-
-}
-
-
-
+  :root {
+    --bg: #0A0A0F;
+    --bg2: #111118;
+    --bg3: #18181F;
+    --bg4: #1F1F28;
+    --border: rgba(255,255,255,0.07);
+    --border2: rgba(255,255,255,0.12);
+    --text: #F0EEF8;
+    --text2: #9896B0;
+    --text3: #5C5A72;
+    --accent: #C084FC;
+    --accent2: #A855F7;
+    --accent3: #7C3AED;
+    --teal: #2DD4BF;
+    --teal2: #0D9488;
+    --red: #F87171;
+    --red2: #EF4444;
+    --amber: #FBBF24;
+    --amber2: #D97706;
+    --green: #4ADE80;
+    --green2: #16A34A;
+    --blue: #60A5FA;
+    --blue2: #2563EB;
+    --mono: 'JetBrains Mono', monospace;
+    --font: 'Vazirmatn', sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font);
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    direction: rtl;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(10,10,15,0.9);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    display: flex; align-items: center; gap: 0.5rem;
+    height: 56px;
+  }
+  nav .brand {
+    font-size: 13px; font-weight: 600; letter-spacing: 0.08em;
+    color: var(--accent); text-transform: uppercase;
+    padding: 4px 10px; border: 1px solid rgba(192,132,252,0.3);
+    border-radius: 4px; margin-left: auto;
+  }
+  nav a {
+    color: var(--text2); font-size: 13px; text-decoration: none;
+    padding: 6px 12px; border-radius: 6px;
+    transition: all 0.15s;
+  }
+  nav a:hover { color: var(--text); background: var(--bg4); }
+  nav a.active { color: var(--accent); }
+
+  /* LAYOUT */
+  .container {
+    max-width: 1280px; margin: 0 auto;
+    padding: 80px 2rem 4rem;
+  }
+
+  /* SECTION HEADER */
+  .section-header {
+    margin-bottom: 2rem;
+    display: flex; align-items: flex-start; gap: 1rem;
+  }
+  .section-num {
+    font-family: var(--mono);
+    font-size: 11px; color: var(--accent);
+    background: rgba(192,132,252,0.1);
+    border: 1px solid rgba(192,132,252,0.2);
+    padding: 3px 8px; border-radius: 4px;
+    margin-top: 4px;
+  }
+  .section-title { font-size: 22px; font-weight: 700; color: var(--text); }
+  .section-sub { font-size: 14px; color: var(--text3); margin-top: 4px; }
+
+  /* HERO METRICS */
+  .metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 2rem;
+  }
+  .metric-card {
+    background: var(--bg2);
+    padding: 1.25rem 1.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .metric-card::before {
+    content: '';
+    position: absolute; top: 0; right: 0; left: 0; height: 2px;
+  }
+  .metric-card.purple::before { background: linear-gradient(90deg, var(--accent), var(--accent3)); }
+  .metric-card.teal::before { background: linear-gradient(90deg, var(--teal), var(--teal2)); }
+  .metric-card.red::before { background: linear-gradient(90deg, var(--red), var(--red2)); }
+  .metric-card.amber::before { background: linear-gradient(90deg, var(--amber), var(--amber2)); }
+  .metric-card.green::before { background: linear-gradient(90deg, var(--green), var(--green2)); }
+  .metric-card.blue::before { background: linear-gradient(90deg, var(--blue), var(--blue2)); }
+
+  .metric-label { font-size: 11px; color: var(--text3); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 8px; }
+  .metric-value { font-size: 26px; font-weight: 700; font-variant-numeric: tabular-nums; }
+  .metric-value.purple { color: var(--accent); }
+  .metric-value.teal { color: var(--teal); }
+  .metric-value.red { color: var(--red); }
+  .metric-value.amber { color: var(--amber); }
+  .metric-value.green { color: var(--green); }
+  .metric-value.blue { color: var(--blue); }
+  .metric-badge {
+    display: inline-block; margin-top: 6px;
+    font-size: 11px; padding: 2px 6px; border-radius: 3px;
+    font-weight: 500;
+  }
+  .badge-warn { background: rgba(251,191,36,0.15); color: var(--amber); }
+  .badge-danger { background: rgba(248,113,113,0.15); color: var(--red); }
+  .badge-ok { background: rgba(74,222,128,0.15); color: var(--green); }
+  .badge-info { background: rgba(192,132,252,0.15); color: var(--accent); }
+
+  /* CHART PANELS */
+  .panel {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+  }
+  .panel-header {
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; gap: 10px;
+  }
+  .panel-title { font-size: 14px; font-weight: 600; }
+  .panel-tag {
+    font-size: 10px; font-family: var(--mono);
+    padding: 2px 6px; border-radius: 3px;
+    background: var(--bg4); color: var(--text3);
+    border: 1px solid var(--border2);
+    margin-right: auto;
+  }
+  .panel-body { padding: 1.5rem; }
+
+  .charts-2col {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .charts-3col {
+    display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  /* SQL BLOCK */
+  .sql-block {
+    background: var(--bg);
+    border: 1px solid var(--border2);
+    border-radius: 8px;
+    margin: 1rem 0;
+    overflow: hidden;
+  }
+  .sql-header {
+    background: var(--bg3);
+    padding: 8px 1rem;
+    font-size: 11px; font-family: var(--mono);
+    color: var(--text3);
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; gap: 8px;
+  }
+  .sql-dot { width: 6px; height: 6px; border-radius: 50%; }
+  .sql-dot.r { background: #FF5F57; }
+  .sql-dot.y { background: #FFBD2E; }
+  .sql-dot.g { background: #28C840; }
+  .sql-code {
+    padding: 1rem;
+    font-family: var(--mono);
+    font-size: 12.5px;
+    line-height: 1.7;
+    color: #C9C2E4;
+    white-space: pre;
+    overflow-x: auto;
+  }
+  .sql-kw { color: #C084FC; }
+  .sql-fn { color: #2DD4BF; }
+  .sql-str { color: #86EFAC; }
+  .sql-cmt { color: #5C5A72; font-style: italic; }
+  .sql-num { color: #FBBF24; }
+
+  /* SECTION DIVIDER */
+  .divider {
+    height: 1px; background: var(--border);
+    margin: 3rem 0;
+  }
+
+  /* PROBLEM CARDS */
+  .problems-grid {
+    display: grid; grid-template-columns: 1fr;
+    gap: 1.5rem; margin-bottom: 2rem;
+  }
+  .problem-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .problem-header {
+    padding: 1.25rem 1.5rem;
+    display: flex; align-items: center; gap: 1rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .problem-num {
+    width: 36px; height: 36px; border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--mono); font-size: 15px; font-weight: 700;
+    flex-shrink: 0;
+  }
+  .p1 .problem-num { background: rgba(248,113,113,0.15); color: var(--red); }
+  .p2 .problem-num { background: rgba(251,191,36,0.15); color: var(--amber); }
+  .p3 .problem-num { background: rgba(192,132,252,0.15); color: var(--accent); }
+  .problem-title { font-size: 16px; font-weight: 600; }
+  .problem-subtitle { font-size: 13px; color: var(--text3); margin-top: 2px; }
+  .problem-body { padding: 1.5rem; }
+  .problem-evidence {
+    background: var(--bg3); border-radius: 8px; padding: 1rem;
+    margin-bottom: 1.25rem;
+    border-right: 3px solid;
+  }
+  .p1 .problem-evidence { border-color: var(--red); }
+  .p2 .problem-evidence { border-color: var(--amber); }
+  .p3 .problem-evidence { border-color: var(--accent); }
+  .evidence-title { font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text3); margin-bottom: 8px; }
+  .evidence-items { list-style: none; }
+  .evidence-items li {
+    font-size: 13px; color: var(--text2);
+    padding: 4px 0;
+    display: flex; gap: 8px; align-items: flex-start;
+  }
+  .evidence-items li::before { content: '→'; color: var(--text3); flex-shrink: 0; }
+
+  /* BACKLOG TABLE */
+  .backlog-table { width: 100%; border-collapse: collapse; }
+  .backlog-table th {
+    text-align: right; font-size: 11px; text-transform: uppercase;
+    letter-spacing: 0.06em; color: var(--text3);
+    padding: 10px 12px; border-bottom: 1px solid var(--border2);
+    font-weight: 500;
+  }
+  .backlog-table td {
+    padding: 12px;
+    border-bottom: 1px solid var(--border);
+    font-size: 13px; vertical-align: top;
+  }
+  .backlog-table tr:last-child td { border-bottom: none; }
+  .backlog-table tr:hover td { background: rgba(255,255,255,0.02); }
+
+  .priority-badge {
+    display: inline-flex; align-items: center; gap: 4px;
+    padding: 3px 8px; border-radius: 4px; font-size: 11px; font-weight: 600;
+  }
+  .prio-critical { background: rgba(248,113,113,0.15); color: var(--red); border: 1px solid rgba(248,113,113,0.3); }
+  .prio-high { background: rgba(251,191,36,0.15); color: var(--amber); border: 1px solid rgba(251,191,36,0.3); }
+  .prio-medium { background: rgba(96,165,250,0.15); color: var(--blue); border: 1px solid rgba(96,165,250,0.3); }
+  .prio-low { background: rgba(148,163,184,0.1); color: var(--text3); border: 1px solid rgba(148,163,184,0.2); }
+
+  .effort-bar {
+    display: flex; gap: 3px; align-items: center;
+  }
+  .effort-dot {
+    width: 8px; height: 8px; border-radius: 2px;
+    background: var(--bg4);
+  }
+  .effort-dot.filled { background: var(--accent); }
+
+  .impact-bar-wrap {
+    background: var(--bg4); border-radius: 3px; height: 4px; width: 80px;
+    overflow: hidden;
+  }
+  .impact-bar { height: 100%; border-radius: 3px; background: var(--teal); }
+
+  /* FUNNEL */
+  .funnel-container { padding: 1rem 0; }
+  .funnel-step {
+    display: flex; align-items: center; gap: 1rem;
+    margin-bottom: 6px;
+  }
+  .funnel-label { font-size: 12px; color: var(--text2); min-width: 140px; text-align: right; }
+  .funnel-bar-wrap { flex: 1; background: var(--bg4); border-radius: 4px; height: 32px; overflow: hidden; }
+  .funnel-bar {
+    height: 100%; border-radius: 4px;
+    display: flex; align-items: center; padding: 0 10px;
+    font-size: 12px; font-weight: 600; color: white;
+    transition: width 0.6s ease;
+  }
+  .funnel-pct { font-size: 12px; color: var(--text3); min-width: 50px; }
+
+  /* CAMPAIGN TABLE */
+  .campaign-row { display: flex; gap: 0; align-items: center; }
+
+  /* TABS */
+  .tabs { display: flex; gap: 2px; margin-bottom: 1.5rem; }
+  .tab-btn {
+    padding: 8px 16px; border-radius: 6px; border: none;
+    background: transparent; color: var(--text3);
+    font-size: 13px; cursor: pointer; font-family: var(--font);
+    transition: all 0.15s;
+  }
+  .tab-btn:hover { background: var(--bg4); color: var(--text2); }
+  .tab-btn.active {
+    background: rgba(192,132,252,0.15);
+    color: var(--accent);
+    border: 1px solid rgba(192,132,252,0.3);
+  }
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+
+  /* LEGEND */
+  .chart-legend {
+    display: flex; flex-wrap: wrap; gap: 12px;
+    margin-bottom: 10px; font-size: 12px; color: var(--text2);
+  }
+  .chart-legend span {
+    display: flex; align-items: center; gap: 5px;
+  }
+  .leg-dot { width: 10px; height: 10px; border-radius: 2px; }
+
+  /* SCROLLBAR */
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--bg4); border-radius: 3px; }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .charts-2col, .charts-3col { grid-template-columns: 1fr; }
+    nav { overflow-x: auto; }
+  }
 </style>
-
-
-
 </head>
-
-
-
-
-
-
-
 <body>
 
-
-
-
-
-
-
 <nav>
-
-
-
-  <div style="color:#A855F7;font-weight:700">PA Dashboard</div>
-
-
-
-  <div>
-
-
-
-    <a href="#">Product</a>
-
-
-
-    <a href="#">Finance</a>
-
-
-
-    <a href="#">Marketing</a>
-
-
-
-  </div>
-
-
-
+  <div class="brand">PA Task — Beauty Startup</div>
+  <a href="#dashboard1" class="active">داشبورد محصول</a>
+  <a href="#dashboard2">داشبورد تجاری/مالی</a>
+  <a href="#dashboard3">داشبورد مارکتینگ</a>
+  <a href="#problems">مشکلات</a>
+  <a href="#backlog">بک‌لاگ</a>
 </nav>
-
-
-
-
-
-
 
 <div class="container">
 
-
-
-
-
-
-
-  <!-- HERO -->
-
-
-
-  <div class="hero">
-
-
-
-
-
-
-
-    <div class="card">
-
-
-
-      <h3>Revenue</h3>
-
-
-
-      <div class="value">$178.7M</div>
-
-
-
+  <!-- HERO METRICS -->
+  <div class="section-header" style="margin-top: 1rem;">
+    <div class="section-num">OVERVIEW</div>
+    <div>
+      <div class="section-title">خلاصه اجرایی — فروشگاه آرایشی</div>
+      <div class="section-sub">تحلیل ۷ ماهه (مارس تا سپتامبر ۲۰۲۲) | ۱۰۰۰ کاربر ثبت‌نام‌شده | ۲۰۰ سفارش</div>
     </div>
-
-
-
-
-
-
-
-    <div class="card">
-
-
-
-      <h3>Conversion</h3>
-
-
-
-      <div class="value">16.7%</div>
-
-
-
-    </div>
-
-
-
-
-
-
-
-    <div class="card">
-
-
-
-      <h3>Return Rate</h3>
-
-
-
-      <div class="value">22.5%</div>
-
-
-
-    </div>
-
-
-
-
-
-
-
   </div>
 
-
-
-
-
-
-
-  <!-- PANELS -->
-
-
-
-  <div class="grid">
-
-
-
-
-
-
-
-    <div class="panel">
-
-
-
-      <div class="title">User Funnel</div>
-
-
-
-      <canvas id="c1"></canvas>
-
-
-
+  <div class="metrics-grid">
+    <div class="metric-card teal">
+      <div class="metric-label">کل درآمد</div>
+      <div class="metric-value teal">$178.7M</div>
+      <div class="metric-badge badge-warn">اوج در آوریل</div>
     </div>
-
-
-
-
-
-
-
-    <div class="panel">
-
-
-
-      <div class="title">Revenue Trend</div>
-
-
-
-      <canvas id="c2"></canvas>
-
-
-
+    <div class="metric-card red">
+      <div class="metric-label">نرخ بازگشت کالا</div>
+      <div class="metric-value red">22.5%</div>
+      <div class="metric-badge badge-danger">بنچ‌مارک: ۵–۱۰٪</div>
     </div>
-
-
-
-
-
-
-
+    <div class="metric-card amber">
+      <div class="metric-label">نرخ تبدیل کاربر</div>
+      <div class="metric-value amber">16.7%</div>
+      <div class="metric-badge badge-warn">پایین‌تر از معیار</div>
+    </div>
+    <div class="metric-card purple">
+      <div class="metric-label">استفاده از AI مشاوره</div>
+      <div class="metric-value purple">2.6%</div>
+      <div class="metric-badge badge-danger">بسیار پایین</div>
+    </div>
+    <div class="metric-card blue">
+      <div class="metric-label">میانگین ارزش سفارش</div>
+      <div class="metric-value blue">$893K</div>
+      <div class="metric-badge badge-ok">ثابت</div>
+    </div>
+    <div class="metric-card green">
+      <div class="metric-label">تعداد بازدید ماهانه</div>
+      <div class="metric-value green">~1,430</div>
+      <div class="metric-badge badge-ok">۱۰۰٪ بازدیدکنندگان</div>
+    </div>
   </div>
 
+  <!-- ═══════════════════════════════ DASHBOARD 1 ═══════════════════════════════ -->
+  <div class="divider" id="dashboard1"></div>
 
+  <div class="section-header">
+    <div class="section-num">D-01</div>
+    <div>
+      <div class="section-title">داشبورد محصول — رفتار کاربر و قیف تبدیل</div>
+      <div class="section-sub">تحلیل فانل، نشست‌ها، مشاوره AI و رفتار خرید</div>
+    </div>
+  </div>
 
+  <!-- SQL 1 -->
+  <div class="panel">
+    <div class="panel-header">
+      <div class="panel-title">کوئری‌های SQL — داشبورد محصول</div>
+      <div class="panel-tag">SQL · SQLite</div>
+    </div>
+    <div class="panel-body">
+      <div class="sql-block">
+        <div class="sql-header">
+          <div class="sql-dot r"></div><div class="sql-dot y"></div><div class="sql-dot g"></div>
+          Q1 — فانل کامل کاربر
+        </div>
+        <div class="sql-code"><span class="sql-cmt">-- نرخ تبدیل هر مرحله از فانل</span>
+<span class="sql-kw">SELECT</span>
+  <span class="sql-fn">COUNT</span>(DISTINCT c.user_id)                              <span class="sql-kw">AS</span> total_customers,
+  <span class="sql-fn">COUNT</span>(DISTINCT v.user_id)                              <span class="sql-kw">AS</span> unique_visitors,
+  <span class="sql-fn">COUNT</span>(DISTINCT co.user_id)                             <span class="sql-kw">AS</span> ai_consultation_users,
+  <span class="sql-fn">COUNT</span>(DISTINCT o.user_id)                              <span class="sql-kw">AS</span> ordering_customers,
+  <span class="sql-fn">ROUND</span>(<span class="sql-fn">COUNT</span>(DISTINCT o.user_id) * <span class="sql-num">100.0</span> / <span class="sql-fn">COUNT</span>(DISTINCT c.user_id), <span class="sql-num">2</span>) <span class="sql-kw">AS</span> conversion_rate_pct,
+  <span class="sql-fn">ROUND</span>(<span class="sql-fn">COUNT</span>(DISTINCT co.user_id) * <span class="sql-num">100.0</span> / <span class="sql-fn">COUNT</span>(DISTINCT v.user_id), <span class="sql-num">2</span>) <span class="sql-kw">AS</span> ai_adoption_rate_pct
+<span class="sql-kw">FROM</span> customers c
+<span class="sql-kw">LEFT JOIN</span> visits v         <span class="sql-kw">ON</span> c.user_id = v.user_id
+<span class="sql-kw">LEFT JOIN</span> consultation co  <span class="sql-kw">ON</span> c.user_id = co.user_id
+<span class="sql-kw">LEFT JOIN</span> orders o          <span class="sql-kw">ON</span> c.user_id = o.user_id;</div>
+      </div>
 
+      <div class="sql-block">
+        <div class="sql-header">
+          <div class="sql-dot r"></div><div class="sql-dot y"></div><div class="sql-dot g"></div>
+          Q2 — کیفیت نشست کاربران
+        </div>
+        <div class="sql-code"><span class="sql-kw">SELECT</span>
+  <span class="sql-fn">strftime</span>(<span class="sql-str">'%Y-%m'</span>, start_time)                         <span class="sql-kw">AS</span> month,
+  <span class="sql-fn">COUNT</span>(*) <span class="sql-kw">AS</span> total_sessions,
+  <span class="sql-fn">COUNT</span>(DISTINCT user_id) <span class="sql-kw">AS</span> unique_users,
+  <span class="sql-fn">ROUND</span>(<span class="sql-fn">AVG</span>(page_views), <span class="sql-num">1</span>) <span class="sql-kw">AS</span> avg_page_views,
+  <span class="sql-fn">ROUND</span>(<span class="sql-fn">AVG</span>(
+    (<span class="sql-fn">julianday</span>(end_time) - <span class="sql-fn">julianday</span>(start_time)) * <span class="sql-num">1440</span>
+  ), <span class="sql-num">1</span>) <span class="sql-kw">AS</span> avg_duration_min,
+  <span class="sql-fn">SUM</span>(<span class="sql-kw">CASE</span> <span class="sql-kw">WHEN</span> page_views = <span class="sql-num">1</span> <span class="sql-kw">THEN</span> <span class="sql-num">1</span> <span class="sql-kw">ELSE</span> <span class="sql-num">0</span> <span class="sql-kw">END</span>) <span class="sql-kw">AS</span> bounce_sessions
+<span class="sql-kw">FROM</span> visits
+<span class="sql-kw">GROUP BY</span> month
+<span class="sql-kw">ORDER BY</span> month;</div>
+      </div>
 
+      <div class="sql-block">
+        <div class="sql-header">
+          <div class="sql-dot r"></div><div class="sql-dot y"></div><div class="sql-dot g"></div>
+          Q3 — نرخ تبدیل مشاوره AI به خرید
+        </div>
+        <div class="sql-code"><span class="sql-kw">SELECT</span>
+  <span class="sql-fn">COUNT</span>(DISTINCT co.user_id)                                  <span class="sql-kw">AS</span> consulted_users,
+  <span class="sql-fn">COUNT</span>(DISTINCT o.user_id)                                   <span class="sql-kw">AS</span> consulted_and_ordered,
+  <span class="sql-fn">ROUND</span>(<span class="sql-fn">COUNT</span>(DISTINCT o.user_id) * <span class="sql-num">100.0</span> /
+    <span class="sql-fn">NULLIF</span>(<span class="sql-fn">COUNT</span>(DISTINCT co.user_id), <span class="sql-num">0</span>), <span class="sql-num">1</span>) <span class="sql-kw">AS</span> post_consultation_cvr,
+  <span class="sql-fn">AVG</span>(co.consultation_duration)                               <span class="sql-kw">AS</span> avg_duration,
+  <span class="sql-fn">AVG</span>(co.consultaion_msg_count)                               <span class="sql-kw">AS</span> avg_messages
+<span class="sql-kw">FROM</span> consultation co
+<span class="sql-kw">LEFT JOIN</span> orders o <span class="sql-kw">ON</span> co.user_id = o.user_id;</div>
+      </div>
+    </div>
+  </div>
 
+  <!-- FUNNEL CHART -->
+  <div class="charts-2col">
+    <div class="panel">
+      <div class="panel-header">
+        <div class="panel-title">فانل تبدیل کاربران</div>
+        <div class="panel-tag">Conversion Funnel</div>
+      </div>
+      <div class="panel-body">
+        <div class="funnel-container">
+          <div class="funnel-step">
+            <div class="funnel-label">ثبت‌نام شده</div>
+            <div class="funnel-bar-wrap">
+              <div class="funnel-bar" style="width:100%; background: linear-gradient(90deg,#7C3AED,#C084FC);">1,000</div>
+            </div>
+            <div class="funnel-pct">100٪</div>
+          </div>
+          <div class="funnel-step">
+            <div class="funnel-label">بازدیدکننده سایت</div>
+            <div class="funnel-bar-wrap">
+              <div class="funnel-bar" style="width:100%; background: linear-gradient(90deg,#1D9E75,#2DD4BF);">1,000</div>
+            </div>
+            <div class="funnel-pct">100٪</div>
+          </div>
+          <div class="funnel-step">
+            <div class="funnel-label">استفاده AI مشاوره</div>
+            <div class="funnel-bar-wrap">
+              <div class="funnel-bar" style="width:2.6%; min-width:48px; background: linear-gradient(90deg,#D97706,#FBBF24);">26</div>
+            </div>
+            <div class="funnel-pct" style="color:var(--amber)">2.6٪</div>
+          </div>
+          <div class="funnel-step">
+            <div class="funnel-label">تکمیل خرید</div>
+            <div class="funnel-bar-wrap">
+              <div class="funnel-bar" style="width:16.7%; min-width:60px; background: linear-gradient(90deg,#185FA5,#60A5FA);">167</div>
+            </div>
+            <div class="funnel-pct" style="color:var(--blue)">16.7٪</div>
+          </div>
+          <div class="funnel-step">
+            <div class="funnel-label">خرید مجدد</div>
+            <div class="funnel-bar-wrap">
+              <div class="funnel-bar" style="width:2.6%; min-width:40px; background: linear-gradient(90deg,#A32D2D,#F87171);">26</div>
+            </div>
+            <div class="funnel-pct" style="color:var(--red)">2.6٪</div>
+          </div>
+        </div>
+        <div style="margin-top:1rem; padding: 10px; background: rgba(248,113,113,0.07); border: 1px solid rgba(248,113,113,0.2); border-radius:6px;">
+          <div style="font-size:12px; color:var(--text3);">⚠ نرخ AI → خرید فقط ۷.۷٪ — فاصله زیاد با پتانسیل مزیت رقابتی</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-header">
+        <div class="panel-title">بازدیدها و نشست‌ها — ماهانه</div>
+        <div class="panel-tag">Monthly Sessions</div>
+      </div>
+      <div class="panel-body">
+        <div class="chart-legend">
+          <span><div class="leg-dot" style="background:#C084FC"></div>تعداد نشست‌ها</span>
+          <span><div class="leg-dot" style="background:#2DD4BF"></div>بازدیدکنندگان منحصر</span>
+        </div>
+        <div style="position:relative; height:220px;">
+          <canvas id="sessionsChart" role="img" aria-label="Monthly sessions and unique visitors chart">Sessions ranged from 1342 to 1512 per month</canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="charts-3col">
+    <div class="panel">
+      <div class="panel-header">
+        <div class="panel-title">توزیع صفحات در نشست</div>
+        <div class="panel-tag">Page Views Distribution</div>
+      </div>
+      <div class="panel-body">
+        <div style="position:relative; height:200px;">
+          <canvas id="pvChart" role="img" aria-label="Page views per session distribution">Most sessions have 4-7 page views</canvas>
+        </div>
+      </div>
+    </div>
+    <div class="panel">
+      <div class="panel-header">
+        <div class="panel-title">توزیع مدت نشست</div>
+        <div class="panel-tag">Session Duration</div>
+      </div>
+      <div class="panel-body">
+        <div style="position:relative; height:200px;">
+          <canvas id="durChart" role="img" aria-label="Session duration distribution">Average session is 8.9 minutes</canvas>
+        </div>
+      </div>
+    </div>
+    <div class="panel">
+      <div class="panel-header">
+        <div class="panel-title">وضعیت سفارش‌ها</div>
+        <div class="panel-tag">Order Status</div>
+      </div>
+      <div class="panel-body">
+        <div class="chart-legend">
+          <span><div class="leg-dot" style="background:#4ADE80"></div>تکمیل‌شده: 155</span>
+          <span><div class="leg-dot" style="background:#F87171"></div>برگشتی: 45</span>
+        </div>
+        <div style="position:relative; height:200px;">
+          <canvas id="statusChart" role="img" aria-label="Order status donut chart: 155 completed, 45 returned">77.5% completed, 22.5% returned</canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════ DASHBOARD 2 ═══════════════════════════════ -->
+  <div class="divider" id="dashboard2"></div>
+
+  <div class="section-header">
+    <div class="section-num">D-02</div>
+    <div>
+      <div class="section-title">داشبورد تجاری / مالی — درآمد، سفارش و پرداخت</div>
+      <div class="section-sub">روند درآمد ماهانه، ارزش سفارش، محصولات پرفروش و روش‌های پرداخت</div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <div class="panel-header">
+      <div class="panel-title">کوئری‌های SQL — داشبورد تجاری/مالی</div>
+      <div class="panel-tag">SQL · SQLite</div>
+    </div>
+    <div class="panel-body">
+      <div class="sql-block">
+        <div class="sql-header">
+          <div class="sql-dot r"></div><div class="sql-dot y"></div><div class="sql-dot g"></div>
+          Q4 — درآمد و سفارش‌های ماهانه
+        </div>
+        <div class="sql-code"><span class="sql-kw">SELECT</span>
+  <span class="sql-fn">strftime</span>(<span class="sql-str">'%Y-%m'</span>, t.transaction_date)             <span class="sql-kw">AS</span> month,
+  <span class="sql-fn">COUNT</span>(t.transaction_id)                                 <span class="sql-kw">AS</span> num_orders,
+  <span class="sql-fn">SUM</span>(<span class="sql-fn">CAST</span>(<span class="sql-fn">REPLACE</span>(<span class="sql-fn">REPLACE</span>(t.amount, <span class="sql-str">'$'</span>,<span class="sql-str">''</span>), <span class="sql-str">','</span>,<span class="sql-str">''</span>) <span class="sql-kw">AS</span> REAL)) <span class="sql-kw">AS</span> total_revenue,
+  <span class="sql-fn">AVG</span>(<span class="sql-fn">CAST</span>(<span class="sql-fn">REPLACE</span>(<span class="sql-fn">REPLACE</span>(t.amount, <span class="sql-str">'$'</span>,<span class="sql-str">''</span>), <span class="sql-str">','</span>,<span class="sql-str">''</span>) <span class="sql-kw">AS</span> REAL)) <span class="sql-kw">AS</span> avg_order_value,
+  <span class="sql-fn">SUM</span>(<span class="sql-fn">CASE</span> <span class="sql-kw">WHEN</span> o.status=<span class="sql-str">'Returned'</span> <span class="sql-kw">THEN</span> <span class="sql-num">1</span> <span class="sql-kw">ELSE</span> <span class="sql-num">0</span> <span class="sql-kw">END</span>) <span class="sql-kw">AS</span> returned_orders
+<span class="sql-kw">FROM</span> transactions t
+<span class="sql-kw">JOIN</span> orders o <span class="sql-kw">ON</span> t.order_id = o.order_id
+<span class="sql-kw">GROUP BY</span> month <span class="sql-kw">ORDER BY</span> month;</div>
+      </div>
+
+      <div class="sql-block">
+        <div class="sql-header">
+          <div class="sql-dot r"></div><div class="sql-dot y"></div><div class="sql-dot g"></div>
+          Q5 — پرفروش‌ترین محصولات
+        </div>
+        <div class="sql-code"><span class="sql-kw">SELECT</span>
+  p.name, c.name <span class="sql-kw">AS</span> category,
+  <span class="sql-fn">SUM</span>(od.quantity)  <span class="sql-kw">AS</span> total_units_sold,
+  p.stock_quantity  <span class="sql-kw">AS</span> remaining_stock,
+  <span class="sql-fn">ROUND</span>(<span class="sql-fn">SUM</span>(od.quantity) * <span class="sql-num">100.0</span> /
+    (<span class="sql-kw">SELECT</span> <span class="sql-fn">SUM</span>(quantity) <span class="sql-kw">FROM</span> orderdetails), <span class="sql-num">1</span>) <span class="sql-kw">AS</span> sales_share_pct
+<span class="sql-kw">FROM</span> orderdetails od
+<span class="sql-kw">JOIN</span> products p  <span class="sql-kw">ON</span> od.product_id = p.product_id
+<span class="sql-kw">JOIN</span> categories c <span class="sql-kw">ON</span> p.category_id = c.category_id
+<span class="sql-kw">GROUP BY</span> p.product_id
+<span class="sql-kw">ORDER BY</span> total_units_sold <span class="sql-kw">DESC LIMIT</span> <span class="sql-num">10</span>;</div>
+      </div>
+
+      <div class="sql-block">
+        <div class="sql-header">
+          <div class="sql-dot r"></div><div class="sql-dot y"></div><div class="sql-dot g"></div>
+          Q6 — روش‌های پرداخت و سهم هر روش
+        </div>
+        <div class="sql-code"><span class="sql-kw">SELECT</span>
+  payment_type,
+  <span class="sql-fn">COUNT</span>(*) <span class="sql-kw">AS</span> transaction_count,
+  <span class="sql-fn">ROUND</span>(<span class="sql-fn">COUNT</span>(*) * <span class="sql-num">100.0</span> / (<span class="sql-kw">SELECT COUNT</span>(*) <span class="sql-kw">FROM</span> transactions), <span class="sql-num">1</span>) <span class="sql-kw">AS</span> share_pct,
+  <span class="sql-fn">SUM</span>(<span class="sql-fn">CAST</span>(<span class="sql-fn">REPLACE</span>(<span class="sql-fn">REPLACE</span>(amount, <span class="sql-str">'$'</span>,<span class="sql-str">''</span>), <span class="sql-str">','</span>,<span class="sql-str">''</span>) <span class="sql-kw">AS</span> REAL)) <span class="sql-kw">AS</span> total_revenue
+<span class="sql-kw">FROM</span> transactions
+<span class="sql-kw">GROUP BY</span> payment_type
+<span class="sql-kw">ORDER BY</span> transaction_count <span class="sql-kw">DESC</span>;</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel" style="margin-bottom:1.5rem;">
+    <div class="panel-header">
+      <div class="panel-title">روند درآمد ماهانه — با تعداد سفارش‌ها</div>
+      <div class="panel-tag">Revenue Trend</div>
+    </div>
+    <div class="panel-body">
+      <div class="chart-legend">
+        <span><div class="leg-dot" style="background:#2DD4BF"></div>درآمد ماهانه ($)</span>
+        <span><div class="leg-dot" style="background:rgba(192,132,252,0.5); border:1px dashed #C084FC"></div>تعداد سفارش</span>
+      </div>
+      <div style="position:relative; height:280px;">
+        <canvas id="revenueChart" role="img" aria-label="Monthly revenue trend chart showing decline from April to August">Revenue peaked at 32.7M in April and declined to 18.3M by August</canvas>
+      </div>
+    </div>
+  </div>
+
+  <div class="charts-2col">
+    <div class="panel">
+      <div class="panel-header">
+        <div class="panel-title">توزیع فروش بر اساس دسته‌بندی</div>
+        <div class="panel-tag">Category Distribution</div>
+      </div>
+      <div class="panel-body">
+        <div class="chart-legend">
+          <span><div class="leg-dot" style="background:#C084FC"></div>Cat 3: 121</span>
+          <span><div class="leg-dot" style="background:#2DD4BF"></div>Cat 4: 93</span>
+          <span><div class="leg-dot" style="background:#60A5FA"></div>Cat 2: 83</span>
+          <span><div class="leg-dot" style="background:#FBBF24"></div>Cat 1: 59</span>
+          <span><div class="leg-dot" style="background:#F87171"></div>Cat 5: 53</span>
+        </div>
+        <div style="position:relative; height:210px;">
+          <canvas id="catChart" role="img" aria-label="Category sales distribution pie chart">Category 3 leads with 29.7% share</canvas>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-header">
+        <div class="panel-title">روش‌های پرداخت</div>
+        <div class="panel-tag">Payment Methods</div>
+      </div>
+      <div class="panel-body">
+        <div class="chart-legend">
+          <span><div class="leg-dot" style="background:#C084FC"></div>Credit Card: 74 (37٪)</span>
+          <span><div class="leg-dot" style="background:#2DD4BF"></div>PayPal: 72 (36٪)</span>
+          <span><div class="leg-dot" style="background:#60A5FA"></div>Debit Card: 54 (27٪)</span>
+        </div>
+        <div style="position:relative; height:210px;">
+          <canvas id="payChart" role="img" aria-label="Payment method distribution donut">Credit Card 37%, PayPal 36%, Debit Card 27%</canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════ DASHBOARD 3 ═══════════════════════════════ -->
+  <div class="divider" id="dashboard3"></div>
+
+  <div class="section-header">
+    <div class="section-num">D-03</div>
+    <div>
+      <div class="section-title">داشبورد مارکتینگ — کمپین‌ها و هزینه جذب</div>
+      <div class="section-sub">CTR، CPA، بودجه و کارایی کمپین‌ها در مقابل بنچ‌مارک صنعت</div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <div class="panel-header">
+      <div class="panel-title">کوئری‌های SQL — داشبورد مارکتینگ</div>
+      <div class="panel-tag">SQL · SQLite</div>
+    </div>
+    <div class="panel-body">
+      <div class="sql-block">
+        <div class="sql-header">
+          <div class="sql-dot r"></div><div class="sql-dot y"></div><div class="sql-dot g"></div>
+          Q7 — عملکرد کمپین‌های مارکتینگ
+        </div>
+        <div class="sql-code"><span class="sql-kw">SELECT</span>
+  campaign_id,
+  start_date, end_date,
+  <span class="sql-fn">CAST</span>(<span class="sql-fn">REPLACE</span>(<span class="sql-fn">REPLACE</span>(budget, <span class="sql-str">'$'</span>,<span class="sql-str">''</span>), <span class="sql-str">','</span>,<span class="sql-str">''</span>) <span class="sql-kw">AS</span> REAL) <span class="sql-kw">AS</span> budget_usd,
+  clicks, conversions,
+  <span class="sql-fn">ROUND</span>(conversions * <span class="sql-num">100.0</span> / <span class="sql-fn">NULLIF</span>(clicks, <span class="sql-num">0</span>), <span class="sql-num">2</span>) <span class="sql-kw">AS</span> conversion_rate_pct,
+  <span class="sql-fn">ROUND</span>(budget_usd / <span class="sql-fn">NULLIF</span>(conversions, <span class="sql-num">0</span>), <span class="sql-num">0</span>)  <span class="sql-kw">AS</span> cost_per_acquisition,
+  <span class="sql-fn">JULIANDAY</span>(end_date) - <span class="sql-fn">JULIANDAY</span>(start_date)         <span class="sql-kw">AS</span> campaign_days
+<span class="sql-kw">FROM</span> campaigns
+<span class="sql-kw">ORDER BY</span> conversion_rate_pct <span class="sql-kw">DESC</span>;</div>
+      </div>
+
+      <div class="sql-block">
+        <div class="sql-header">
+          <div class="sql-dot r"></div><div class="sql-dot y"></div><div class="sql-dot g"></div>
+          Q8 — ROAS و نرخ بازگشت سرمایه مارکتینگ
+        </div>
+        <div class="sql-code"><span class="sql-kw">SELECT</span>
+  <span class="sql-fn">SUM</span>(budget_usd)         <span class="sql-kw">AS</span> total_marketing_spend,
+  <span class="sql-fn">SUM</span>(conversions)       <span class="sql-kw">AS</span> total_conversions,
+  <span class="sql-fn">ROUND</span>(total_revenue / total_marketing_spend, <span class="sql-num">2</span>) <span class="sql-kw">AS</span> ROAS,
+  <span class="sql-fn">ROUND</span>(total_marketing_spend / total_conversions, <span class="sql-num">0</span>) <span class="sql-kw">AS</span> overall_CPA
+<span class="sql-kw">FROM</span> (
+  <span class="sql-kw">SELECT</span>
+    <span class="sql-fn">SUM</span>(<span class="sql-fn">CAST</span>(<span class="sql-fn">REPLACE</span>(<span class="sql-fn">REPLACE</span>(budget, <span class="sql-str">'$'</span>,<span class="sql-str">''</span>), <span class="sql-str">','</span>,<span class="sql-str">''</span>) <span class="sql-kw">AS</span> REAL)) <span class="sql-kw">AS</span> budget_usd,
+    <span class="sql-fn">SUM</span>(conversions) <span class="sql-kw">AS</span> total_conversions,
+    (<span class="sql-kw">SELECT</span> <span class="sql-fn">SUM</span>(<span class="sql-fn">CAST</span>(<span class="sql-fn">REPLACE</span>(<span class="sql-fn">REPLACE</span>(amount, <span class="sql-str">'$'</span>,<span class="sql-str">''</span>), <span class="sql-str">','</span>,<span class="sql-str">''</span>) <span class="sql-kw">AS</span> REAL)) <span class="sql-kw">FROM</span> transactions) <span class="sql-kw">AS</span> total_revenue
+  <span class="sql-kw">FROM</span> campaigns
+) sub;</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Campaign performance table -->
+  <div class="panel" style="margin-bottom:1.5rem;">
+    <div class="panel-header">
+      <div class="panel-title">عملکرد کمپین‌ها — مقایسه CPA و CTR</div>
+      <div class="panel-tag">10 Campaigns</div>
+    </div>
+    <div class="panel-body" style="overflow-x:auto;">
+      <table class="backlog-table">
+        <thead>
+          <tr>
+            <th>کمپین</th>
+            <th>بودجه</th>
+            <th>کلیک</th>
+            <th>تبدیل</th>
+            <th>CTR</th>
+            <th>CPA</th>
+            <th>کارایی</th>
+          </tr>
+        </thead>
+        <tbody id="campaignTableBody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="charts-2col">
+    <div class="panel">
+      <div class="panel-header">
+        <div class="panel-title">مقایسه CTR کمپین‌ها</div>
+        <div class="panel-tag">CTR Comparison</div>
+      </div>
+      <div class="panel-body">
+        <div style="position:relative; height:260px;">
+          <canvas id="ctrChart" role="img" aria-label="CTR comparison across 10 campaigns">Campaign 6 has highest CTR at 20%</canvas>
+        </div>
+      </div>
+    </div>
+    <div class="panel">
+      <div class="panel-header">
+        <div class="panel-title">بودجه در مقابل تبدیل‌ها</div>
+        <div class="panel-tag">Budget vs Conversions</div>
+      </div>
+      <div class="panel-body">
+        <div style="position:relative; height:260px;">
+          <canvas id="budgetChart" role="img" aria-label="Bubble chart of campaign budget vs conversions">Campaign 7 shows best ROI with minimal budget</canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════ PROBLEMS ═══════════════════════════════ -->
+  <div class="divider" id="problems"></div>
+
+  <div class="section-header">
+    <div class="section-num">ANALYSIS</div>
+    <div>
+      <div class="section-title">مشکلات کشف‌شده — ۳ مشکل اصلی کسب‌وکار</div>
+      <div class="section-sub">مبتنی بر داده و مقایسه با بنچ‌مارک صنعت e-commerce آرایشی</div>
+    </div>
+  </div>
+
+  <div class="problems-grid">
+
+    <!-- PROBLEM 1 -->
+    <div class="problem-card p1">
+      <div class="problem-header">
+        <div class="problem-num">P1</div>
+        <div>
+          <div class="problem-title">نرخ بازگشت کالا غیرعادی — ۲۲.۵٪</div>
+          <div class="problem-subtitle">بنچ‌مارک صنعت: ۵–۱۰٪ | این عدد ۲ تا ۴ برابر نرم</div>
+        </div>
+        <span class="priority-badge prio-critical" style="margin-right:auto;">🔴 بحرانی</span>
+      </div>
+      <div class="problem-body">
+        <div class="problem-evidence">
+          <div class="evidence-title">شواهد از داده</div>
+          <ul class="evidence-items">
+            <li>از ۲۰۰ سفارش، ۴۵ سفارش برگشت خورده (۲۲.۵٪) در مقابل بنچ‌مارک ۵–۱۰٪</li>
+            <li>نرخ بازگشت در ماه مارس به اوج ۳۰٪ (۱۰ از ۳۳) رسیده</li>
+            <li>سیستم مشاوره AI فقط ۲.۶٪ کاربران استفاده می‌کنند — مزیت رقابتی اصلی غیرفعال است</li>
+            <li>نرخ تبدیل مشاوره→خرید فقط ۷.۷٪ — نشانه عدم تطابق محصول با انتظار</li>
+          </ul>
+        </div>
+        <div style="background: var(--bg3); border-radius:8px; padding:1rem;">
+          <div style="font-size:12px; color:var(--text3); margin-bottom:8px; text-transform:uppercase; letter-spacing:.06em;">تحلیل ریشه‌ای</div>
+          <div style="font-size:13px; color:var(--text2); line-height:1.7;">
+            در e-commerce آرایشی، بالاترین دلیل برگشت کالا «عدم تطابق رنگ/پوست با توضیحات» است. 
+            استارتاپ یک سیستم AI مشاوره دارد که می‌توانست این مشکل را حل کند، اما تنها ۲.۶٪ کاربران از آن استفاده می‌کنند. 
+            این یعنی مزیت رقابتی اصلی محصول کاملاً نادیده گرفته شده و نرخ بازگشت را بالا نگه داشته.
+            علاوه بر این، توضیحات محصول احتمالاً ناکافی بوده و تصاویر با واقعیت فاصله دارند.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROBLEM 2 -->
+    <div class="problem-card p2">
+      <div class="problem-header">
+        <div class="problem-num">P2</div>
+        <div>
+          <div class="problem-title">AI مشاوره بی‌استفاده — نرخ پذیرش ۲.۶٪</div>
+          <div class="problem-subtitle">مزیت رقابتی اصلی محصول عملاً غیرفعال است</div>
+        </div>
+        <span class="priority-badge prio-high" style="margin-right:auto;">🟡 بالا</span>
+      </div>
+      <div class="problem-body">
+        <div class="problem-evidence">
+          <div class="evidence-title">شواهد از داده</div>
+          <ul class="evidence-items">
+            <li>۱۰۰٪ کاربران ثبت‌نام‌شده از سایت بازدید کرده‌اند — مشکل دسترسی نیست</li>
+            <li>تنها ۲۶ نفر از ۱۰۰۰ کاربر (۲.۶٪) از AI مشاوره استفاده کرده‌اند</li>
+            <li>از این ۲۶ نفر، فقط ۲ نفر (۷.۷٪) بعد از مشاوره خرید کرده‌اند</li>
+            <li>میانگین مدت نشست سایت ۸.۹ دقیقه است — کاربران وقت دارند اما AI را پیدا نمی‌کنند</li>
+          </ul>
+        </div>
+        <div style="background: var(--bg3); border-radius:8px; padding:1rem;">
+          <div style="font-size:12px; color:var(--text3); margin-bottom:8px; text-transform:uppercase; letter-spacing:.06em;">تحلیل ریشه‌ای</div>
+          <div style="font-size:13px; color:var(--text2); line-height:1.7;">
+            دو مشکل موازی: اول، discoverability — کاربران AI مشاوره را پیدا نمی‌کنند یا نمی‌دانند وجود دارد.
+            دوم، UX Flow — حتی آن ۲۶ نفر که مشاوره گرفتند، تنها ۷.۷٪ به خرید رسیدند که نشان می‌دهد 
+            transition از مشاوره به خرید شکسته است. در مقایسه با رقبا مثل Sephora که AI Color IQ را 
+            در صفحه اصلی برجسته می‌کند، این استارتاپ ویژگی اصلی خود را پنهان کرده.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROBLEM 3 -->
+    <div class="problem-card p3">
+      <div class="problem-header">
+        <div class="problem-num">P3</div>
+        <div>
+          <div class="problem-title">افت شدید درآمد از آوریل به اگوست — منهای ۴۴٪</div>
+          <div class="problem-subtitle">روند نزولی پایدار در نیمه دوم دوره بررسی</div>
+        </div>
+        <span class="priority-badge prio-high" style="margin-right:auto;">🟡 بالا</span>
+      </div>
+      <div class="problem-body">
+        <div class="problem-evidence">
+          <div class="evidence-title">شواهد از داده</div>
+          <ul class="evidence-items">
+            <li>درآمد از $32.7M در آوریل به $18.3M در اگوست — کاهش ۴۴٪ در ۴ ماه</li>
+            <li>تعداد سفارش از ۳۵ در آوریل به ۲۴ در اگوست — کاهش ۳۱٪</li>
+            <li>نرخ خرید مجدد فقط ۱۵.۶٪ — اکثر مشتریان بار اول و آخر خرید می‌کنند</li>
+            <li>هزینه کمپین‌ها $41.5M برای ۲۰۰ سفارش — CPA بالا بدون retention strategy</li>
+          </ul>
+        </div>
+        <div style="background: var(--bg3); border-radius:8px; padding:1rem;">
+          <div style="font-size:12px; color:var(--text3); margin-bottom:8px; text-transform:uppercase; letter-spacing:.06em;">تحلیل ریشه‌ای</div>
+          <div style="font-size:13px; color:var(--text2); line-height:1.7;">
+            کسب‌وکار به جای ساختن LTV (Lifetime Value)، در یک حلقه جذب مشتری جدید گیر کرده.
+            با نرخ خرید مجدد ۱۵.۶٪، هر مشتری جدید هزینه‌ای بالا دارد ($207K CPA) و بیشتر نمی‌مانند.
+            این ترکیب با نرخ بازگشت بالا، یک چرخه سوزاندن بودجه بدون رشد پایدار ایجاد می‌کند.
+            بنچ‌مارک e-commerce beauty: نرخ بازگشت مشتری ۳۰–۴۵٪ — این کسب‌وکار فقط ۱۵.۶٪ دارد.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════ BACKLOG ═══════════════════════════════ -->
+  <div class="divider" id="backlog"></div>
+
+  <div class="section-header">
+    <div class="section-num">BACKLOG</div>
+    <div>
+      <div class="section-title">بک‌لاگ اولویت‌بندی‌شده — ۹ راهکار برای ۳ مشکل</div>
+      <div class="section-sub">اولویت‌بندی بر اساس Impact × Effort با Rice Score</div>
+    </div>
+  </div>
+
+  <div class="panel" style="margin-bottom:1.5rem;">
+    <div class="panel-header">
+      <div class="panel-title">ماتریس اولویت‌بندی — Impact در مقابل Effort</div>
+      <div class="panel-tag">Priority Matrix</div>
+    </div>
+    <div class="panel-body">
+      <div style="position:relative; height:320px;">
+        <canvas id="matrixChart" role="img" aria-label="Priority matrix showing 9 solutions plotted by impact vs effort">Quick wins appear in top-left quadrant</canvas>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <div class="panel-header">
+      <div class="panel-title">بک‌لاگ اولویت‌بندی‌شده — جزئیات کامل</div>
+      <div class="panel-tag">9 Items · Sorted by RICE Score</div>
+    </div>
+    <div class="panel-body" style="overflow-x:auto;">
+      <table class="backlog-table">
+        <thead>
+          <tr>
+            <th>ترتیب</th>
+            <th>راهکار</th>
+            <th>مشکل</th>
+            <th>اولویت</th>
+            <th>تأثیر</th>
+            <th>تلاش</th>
+            <th>RICE Score</th>
+            <th>Sprint</th>
+          </tr>
+        </thead>
+        <tbody id="backlogTableBody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div style="margin-top:3rem; padding: 1.5rem; background: var(--bg2); border: 1px solid var(--border); border-radius:12px; text-align:center;">
+    <div style="font-size:12px; color:var(--text3); line-height:1.8;">
+      تحلیل‌گر: Dara Zargaran — Product Analysis Challenge &nbsp;|&nbsp;
+      داده: ۱۰۰۰ مشتری · ۲۰۰ سفارش · ۱۰۰۰۰ نشست · ۱۰ کمپین · ۷ ماه &nbsp;|&nbsp;
+      ابزار: SQL · Python · Chart.js
+    </div>
+  </div>
 
 </div>
 
-
-
-
-
-
-
 <script>
+const MONTHS = ['مارس','آوریل','مه','ژوئن','ژوئیه','اوت','سپتامبر'];
+const CHART_DEFAULTS = {
+  color: '#9896B0',
+  borderColor: 'rgba(255,255,255,0.07)'
+};
 
-
-
-new Chart(document.getElementById("c1"), {
-
-
-
-  type:"doughnut",
-
-
-
-  data:{
-
-
-
-    labels:["Visit","AI","Buy"],
-
-
-
-    datasets:[{
-
-
-
-      data:[1000,26,167],
-
-
-
-      backgroundColor:["#A855F7","#22D3EE","#34D399"]
-
-
-
-    }]
-
-
-
+// ── Sessions Chart ──
+new Chart(document.getElementById('sessionsChart'), {
+  type: 'bar',
+  data: {
+    labels: MONTHS,
+    datasets: [
+      {
+        label: 'نشست‌ها',
+        data: [1400,1443,1512,1408,1457,1438,1342],
+        backgroundColor: 'rgba(192,132,252,0.7)',
+        borderColor: '#C084FC', borderWidth: 1,
+        borderRadius: 4,
+      },
+      {
+        label: 'کاربران منحصر',
+        data: [1400,1443,1512,1408,1457,1438,1342].map(v=>Math.round(v*0.92)),
+        type: 'line',
+        borderColor: '#2DD4BF', borderWidth: 2,
+        borderDash: [4,4],
+        pointBackgroundColor: '#2DD4BF',
+        fill: false, tension: 0.4,
+        yAxisID: 'y',
+      }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false } },
+    scales: {
+      x: { ticks: { color: '#9896B0', font:{size:11} }, grid: { color: 'rgba(255,255,255,0.05)' } },
+      y: { ticks: { color: '#9896B0', font:{size:11} }, grid: { color: 'rgba(255,255,255,0.05)' }, min:1200 }
+    }
   }
-
-
-
 });
 
-
-
-
-
-
-
-new Chart(document.getElementById("c2"), {
-
-
-
-  type:"line",
-
-
-
-  data:{
-
-
-
-    labels:["Mar","Apr","May","Jun","Jul","Aug"],
-
-
-
-    datasets:[{
-
-
-
-      data:[30,32,25,30,20,18],
-
-
-
-      borderColor:"#A855F7",
-
-
-
-      tension:0.4
-
-
-
+// ── Page Views Dist ──
+new Chart(document.getElementById('pvChart'), {
+  type: 'bar',
+  data: {
+    labels: ['1','2','3','4','5','6','7','8','9','10+'],
+    datasets: [{
+      label: 'تعداد نشست',
+      data: [914, 820, 1050, 1200, 1350, 1400, 1100, 850, 700, 616],
+      backgroundColor: [
+        'rgba(248,113,113,0.8)',
+        ...Array(8).fill('rgba(192,132,252,0.7)'),
+        'rgba(96,165,250,0.7)'
+      ],
+      borderRadius: 3,
     }]
-
-
-
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false } },
+    scales: {
+      x: { ticks: { color: '#9896B0', font:{size:11} }, grid: { color: 'rgba(255,255,255,0.04)' } },
+      y: { ticks: { color: '#9896B0', font:{size:11} }, grid: { color: 'rgba(255,255,255,0.04)' } }
+    }
   }
-
-
-
 });
 
+// ── Duration Dist ──
+new Chart(document.getElementById('durChart'), {
+  type: 'bar',
+  data: {
+    labels: ['0-3','3-6','6-9','9-12','12-15','15+'],
+    datasets: [{
+      label: 'نشست',
+      data: [900, 2100, 2800, 2300, 1200, 700],
+      backgroundColor: 'rgba(45,212,191,0.7)',
+      borderRadius: 3,
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false } },
+    scales: {
+      x: { ticks: { color: '#9896B0', font:{size:11} }, grid: { color: 'rgba(255,255,255,0.04)' } },
+      y: { ticks: { color: '#9896B0', font:{size:11} }, grid: { color: 'rgba(255,255,255,0.04)' } }
+    }
+  }
+});
 
+// ── Status Donut ──
+new Chart(document.getElementById('statusChart'), {
+  type: 'doughnut',
+  data: {
+    labels: ['تکمیل‌شده: 155','برگشتی: 45'],
+    datasets: [{
+      data: [155, 45],
+      backgroundColor: ['rgba(74,222,128,0.85)', 'rgba(248,113,113,0.85)'],
+      borderColor: ['#0A0A0F','#0A0A0F'],
+      borderWidth: 3,
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false }, tooltip: {
+      callbacks: { label: ctx => ` ${ctx.label}: ${Math.round(ctx.parsed*100/200)}٪` }
+    }},
+    cutout: '65%',
+  }
+});
 
+// ── Revenue Chart ──
+new Chart(document.getElementById('revenueChart'), {
+  data: {
+    labels: MONTHS,
+    datasets: [
+      {
+        type: 'bar',
+        label: 'درآمد',
+        data: [30597000,32782500,25351800,30597000,20543700,18358200,20543700],
+        backgroundColor: ctx => {
+          const g = ctx.chart.ctx.createLinearGradient(0,0,0,280);
+          g.addColorStop(0,'rgba(45,212,191,0.8)');
+          g.addColorStop(1,'rgba(45,212,191,0.2)');
+          return g;
+        },
+        borderRadius: 5, yAxisID: 'y',
+      },
+      {
+        type: 'line',
+        label: 'سفارش',
+        data: [33,35,32,32,21,24,23],
+        borderColor: '#C084FC', borderWidth: 2,
+        pointBackgroundColor: '#C084FC',
+        fill: false, tension: 0.4,
+        yAxisID: 'y1',
+        borderDash: [5,3],
+      }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false } },
+    scales: {
+      x: { ticks: { color: '#9896B0', font:{size:11} }, grid: { color: 'rgba(255,255,255,0.04)' } },
+      y: {
+        position: 'right',
+        ticks: { color: '#2DD4BF', font:{size:10}, callback: v => '$'+Math.round(v/1e6)+'M' },
+        grid: { color: 'rgba(255,255,255,0.04)' }
+      },
+      y1: {
+        position: 'left',
+        ticks: { color: '#C084FC', font:{size:10} },
+        grid: { display: false }
+      }
+    }
+  }
+});
+
+// ── Category Pie ──
+new Chart(document.getElementById('catChart'), {
+  type: 'doughnut',
+  data: {
+    labels: ['دسته ۳','دسته ۴','دسته ۲','دسته ۱','دسته ۵'],
+    datasets: [{
+      data: [121,93,83,59,53],
+      backgroundColor: ['rgba(192,132,252,0.85)','rgba(45,212,191,0.85)','rgba(96,165,250,0.85)','rgba(251,191,36,0.85)','rgba(248,113,113,0.85)'],
+      borderColor: '#0A0A0F', borderWidth: 3,
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false } },
+    cutout: '55%',
+  }
+});
+
+// ── Payment Donut ──
+new Chart(document.getElementById('payChart'), {
+  type: 'doughnut',
+  data: {
+    labels: ['Credit Card','PayPal','Debit Card'],
+    datasets: [{
+      data: [74,72,54],
+      backgroundColor: ['rgba(192,132,252,0.85)','rgba(45,212,191,0.85)','rgba(96,165,250,0.85)'],
+      borderColor: '#0A0A0F', borderWidth: 3,
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false } },
+    cutout: '60%',
+  }
+});
+
+// ── Campaign Table ──
+const campaigns = [
+  { id:1, budget:4932900, clicks:604, conv:24, ctr:3.97, cpa:205537 },
+  { id:2, budget:387210,  clicks:230, conv:18, ctr:7.83, cpa:21511  },
+  { id:3, budget:4312000, clicks:584, conv:13, ctr:2.23, cpa:331692 },
+  { id:4, budget:6131800, clicks:918, conv:22, ctr:2.40, cpa:278718 },
+  { id:5, budget:1829900, clicks:746, conv:6,  ctr:0.80, cpa:304983 },
+  { id:6, budget:2930100, clicks:120, conv:24, ctr:20.0, cpa:122087 },
+  { id:7, budget:73783,   clicks:940, conv:29, ctr:3.09, cpa:2544   },
+  { id:8, budget:9867000, clicks:266, conv:11, ctr:4.14, cpa:897000 },
+  { id:9, budget:7789100, clicks:373, conv:41, ctr:10.99,cpa:189978 },
+  { id:10,budget:3262900, clicks:487, conv:12, ctr:2.46, cpa:271908 },
+];
+
+const tbody = document.getElementById('campaignTableBody');
+campaigns.forEach(c => {
+  const efficiency = c.cpa < 50000 ? ['prio-critical','ستاره'] : c.cpa < 200000 ? ['prio-medium','خوب'] : ['prio-low','ضعیف'];
+  tbody.innerHTML += `
+    <tr>
+      <td style="color:var(--text3); font-family:var(--mono)">#${c.id}</td>
+      <td style="font-family:var(--mono); font-size:12px">$${(c.budget/1e6).toFixed(2)}M</td>
+      <td>${c.clicks.toLocaleString()}</td>
+      <td style="color:var(--teal)">${c.conv}</td>
+      <td><span style="color:${c.ctr>10?'#4ADE80':c.ctr>5?'#FBBF24':'#9896B0'}">${c.ctr.toFixed(1)}٪</span></td>
+      <td style="color:${c.cpa<50000?'#4ADE80':c.cpa>500000?'#F87171':'#FBBF24'}; font-family:var(--mono)">$${c.cpa.toLocaleString()}</td>
+      <td><span class="priority-badge ${efficiency[0]}">${efficiency[1]}</span></td>
+    </tr>`;
+});
+
+// ── CTR Chart ──
+new Chart(document.getElementById('ctrChart'), {
+  type: 'bar',
+  data: {
+    labels: campaigns.map(c=>'C'+c.id),
+    datasets: [{
+      label: 'CTR %',
+      data: campaigns.map(c=>c.ctr),
+      backgroundColor: campaigns.map(c=>c.ctr>10?'rgba(74,222,128,0.8)':c.ctr>5?'rgba(251,191,36,0.7)':'rgba(192,132,252,0.6)'),
+      borderRadius: 4,
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display:false } },
+    scales: {
+      x: { ticks:{color:'#9896B0',font:{size:11}}, grid:{color:'rgba(255,255,255,0.04)'} },
+      y: { ticks:{color:'#9896B0',font:{size:11},callback:v=>v+'٪'}, grid:{color:'rgba(255,255,255,0.04)'} }
+    }
+  }
+});
+
+// ── Budget vs Conversions Bubble ──
+new Chart(document.getElementById('budgetChart'), {
+  type: 'bubble',
+  data: {
+    datasets: campaigns.map((c,i)=>({
+      label: 'C'+c.id,
+      data: [{ x: Math.round(c.budget/1e6*10)/10, y: c.conv, r: Math.max(5, Math.min(20, c.ctr*1.5)) }],
+      backgroundColor: i===6?'rgba(74,222,128,0.8)':i===7?'rgba(248,113,113,0.7)':'rgba(192,132,252,0.5)',
+      borderColor: i===6?'#4ADE80':i===7?'#F87171':'#C084FC',
+      borderWidth: 1.5,
+    }))
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display:false },
+      tooltip: { callbacks: { label: ctx => `C${ctx.datasetIndex+1}: $${ctx.parsed.x}M بودجه · ${ctx.parsed.y} تبدیل` }}
+    },
+    scales: {
+      x: { title:{display:true,text:'بودجه ($M)',color:'#9896B0',font:{size:11}},
+           ticks:{color:'#9896B0',font:{size:11}}, grid:{color:'rgba(255,255,255,0.04)'},
+           min: -0.2, max: 11 },
+      y: { title:{display:true,text:'تبدیل‌ها',color:'#9896B0',font:{size:11}},
+           ticks:{color:'#9896B0',font:{size:11}}, grid:{color:'rgba(255,255,255,0.04)'},
+           min: 0, max: 48 }
+    }
+  }
+});
+
+// ── Priority Matrix ──
+const solutions = [
+  { label:'S1 AI onboarding popup', x:2, y:9, color:'rgba(74,222,128,0.85)', prob:'P2' },
+  { label:'S2 AI→cart CTA fix', x:2, y:9, color:'rgba(74,222,128,0.7)', prob:'P2' },
+  { label:'S3 AR try-on widget', x:8, y:9, color:'rgba(45,212,191,0.7)', prob:'P1' },
+  { label:'S4 AI placement در PDP', x:3, y:8, color:'rgba(74,222,128,0.7)', prob:'P2' },
+  { label:'S5 بهبود عکس محصول', x:3, y:8, color:'rgba(251,191,36,0.8)', prob:'P1' },
+  { label:'S6 برنامه وفاداری', x:6, y:9, color:'rgba(192,132,252,0.8)', prob:'P3' },
+  { label:'S7 ایمیل retention', x:3, y:7, color:'rgba(192,132,252,0.7)', prob:'P3' },
+  { label:'S8 بهینه کمپین بودجه', x:2, y:7, color:'rgba(96,165,250,0.7)', prob:'P3' },
+  { label:'S9 سیاست بازگشت هوشمند', x:5, y:8, color:'rgba(251,191,36,0.7)', prob:'P1' },
+];
+new Chart(document.getElementById('matrixChart'), {
+  type: 'bubble',
+  data: {
+    datasets: solutions.map(s=>({
+      label: s.label,
+      data: [{ x: s.x, y: s.y, r: 12 }],
+      backgroundColor: s.color,
+      borderColor: s.color.replace('0.','0.'),
+      borderWidth: 1.5,
+    }))
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: {
+      legend: { display:false },
+      tooltip: { callbacks: { label: ctx => solutions[ctx.datasetIndex].label + ' (' + solutions[ctx.datasetIndex].prob + ')' }}
+    },
+    scales: {
+      x: { title:{display:true,text:'← تلاش (Effort) | کم → زیاد →',color:'#9896B0',font:{size:11}},
+           min:0, max:10, ticks:{color:'#9896B0',font:{size:11}}, grid:{color:'rgba(255,255,255,0.04)'} },
+      y: { title:{display:true,text:'↑ تأثیر (Impact)',color:'#9896B0',font:{size:11}},
+           min:5, max:10, ticks:{color:'#9896B0',font:{size:11}}, grid:{color:'rgba(255,255,255,0.04)'} }
+    }
+  }
+});
+
+// ── Backlog Table ──
+const backlog = [
+  { rank:1,  title:'AI مشاوره — رفع جریان ثبت‌نام + Popup معرفی', prob:'P2', prio:'prio-critical', prioBadge:'🔴 بحرانی', impact:9, effort:2, rice:108, sprint:'Sprint 1' },
+  { rank:2,  title:'دکمه مستقیم AI → افزودن به سبد خرید در صفحه مشاوره', prob:'P2', prio:'prio-critical', prioBadge:'🔴 بحرانی', impact:9, effort:2, rice:108, sprint:'Sprint 1' },
+  { rank:3,  title:'بهبود تصاویر محصول (multi-angle + رنگ روی پوست)', prob:'P1', prio:'prio-critical', prioBadge:'🔴 بحرانی', impact:8, effort:3, rice:64, sprint:'Sprint 1' },
+  { rank:4,  title:'قرار دادن ویجت AI در صفحه محصول (PDP integration)', prob:'P2', prio:'prio-high', prioBadge:'🟡 بالا', impact:8, effort:3, rice:64, sprint:'Sprint 2' },
+  { rank:5,  title:'برنامه وفاداری (امتیاز + تخفیف خرید مجدد)', prob:'P3', prio:'prio-high', prioBadge:'🟡 بالا', impact:9, effort:6, rice:54, sprint:'Sprint 2' },
+  { rank:6,  title:'AR Try-On ویجت (تست روی چهره کاربر)', prob:'P1', prio:'prio-high', prioBadge:'🟡 بالا', impact:9, effort:8, rice:45, sprint:'Sprint 3' },
+  { rank:7,  title:'سیستم ایمیل retention (win-back + replenishment)', prob:'P3', prio:'prio-medium', prioBadge:'🔵 متوسط', impact:7, effort:3, rice:56, sprint:'Sprint 2' },
+  { rank:8,  title:'سیاست بازگشت هوشمند (با AI match score)', prob:'P1', prio:'prio-medium', prioBadge:'🔵 متوسط', impact:8, effort:5, rice:48, sprint:'Sprint 3' },
+  { rank:9,  title:'بهینه‌سازی بودجه کمپین (shift به C7/C6 سبک)', prob:'P3', prio:'prio-medium', prioBadge:'🔵 متوسط', impact:7, effort:2, rice:84, sprint:'Sprint 1' },
+];
+
+const btbody = document.getElementById('backlogTableBody');
+backlog.sort((a,b)=>b.rice-a.rice).forEach(item=>{
+  const impactW = Math.round(item.impact*10);
+  const effortDots = Array(5).fill(0).map((_,i)=>
+    `<div class="effort-dot ${i<Math.round(item.effort/2)?'filled':''}"></div>`
+  ).join('');
+  btbody.innerHTML += `
+    <tr>
+      <td style="color:var(--accent); font-family:var(--mono); font-weight:600">#${item.rank}</td>
+      <td style="max-width:260px; color:var(--text)">${item.title}</td>
+      <td><span style="color:${item.prob==='P1'?'var(--red)':item.prob==='P2'?'var(--amber)':'var(--accent)'}; font-weight:600">${item.prob}</span></td>
+      <td><span class="priority-badge ${item.prio}">${item.prioBadge}</span></td>
+      <td>
+        <div class="impact-bar-wrap"><div class="impact-bar" style="width:${impactW}%"></div></div>
+        <div style="font-size:11px; color:var(--text3); margin-top:2px">${item.impact}/10</div>
+      </td>
+      <td><div class="effort-bar">${effortDots}</div></td>
+      <td style="font-family:var(--mono); color:var(--teal); font-weight:600">${item.rice}</td>
+      <td><span style="font-size:11px; color:var(--text3); background:var(--bg4); padding:3px 8px; border-radius:4px;">${item.sprint}</span></td>
+    </tr>`;
+});
+
+// Nav highlight on scroll
+const sections = document.querySelectorAll('[id]');
+const navLinks = document.querySelectorAll('nav a');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => {
+    if (window.scrollY >= s.offsetTop - 80) current = s.id;
+  });
+  navLinks.forEach(a => {
+    a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+  });
+});
 </script>
-
-
-
-
-
-
-
 </body>
-
-
-
 </html>
